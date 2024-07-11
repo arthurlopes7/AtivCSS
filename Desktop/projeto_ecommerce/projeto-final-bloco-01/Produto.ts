@@ -9,9 +9,7 @@ export abstract class Produto {
         this.preco = preco;
     }
 
-    abstract toString(): string;
-
-    getId(): number {
+    getID(): number {
         return this.id;
     }
 
@@ -21,13 +19,5 @@ export abstract class Produto {
 
     getPreco(): number {
         return this.preco;
-    }
-
-    setNome(nome: string): void {
-        this.nome = nome;
-    }
-
-    setPreco(preco: number): void {
-        this.preco = preco;
     }
 }

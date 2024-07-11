@@ -1,4 +1,3 @@
-// Arquivo ProdutoRepository.ts
 import { Produto } from './Produto';
 
 export interface ProdutoRepository {
