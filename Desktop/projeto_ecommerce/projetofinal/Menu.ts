@@ -22,7 +22,7 @@ export class Menu {
     }
 
     private listarProdutoPorId(): void {
-        this.colorirMenu('===== Listar Produto pelo ID =====');
+        this.colorirMenu('======= Listar Produto pelo ID =======');
         const id = readline.questionInt('Digite o ID do produto: ');
         const produto = this.produtos.find(p => p.id === id);
         if (produto) {

@@ -1,20 +1,27 @@
 import * as readline from 'readline-sync';
 import { Produto } from './Produto';
+import { ProdutoFutebol } from './ProdutoFutebol';
+import { ProdutoRepository } from './ProdutoRepository';
+import { ProdutoRepository2 } from './ProdutoRepository2';
 
 export class Menu {
-    private produtos: Produto[] = [];
-    private proximoId: number = 1;
+    private produtoRepository: ProdutoRepository;
+
+    constructor() {
+        this.produtoRepository = new ProdutoRepository2(); 
+    }
 
     private colorirMenu(mensagem: string): void {
-        console.log(`\x1b[36m${mensagem}\x1b[0m`); 
+        console.log(`\x1b[36m${mensagem}\x1b[0m`);
     }
 
     private listarTodosOsProdutos(): void {
         this.colorirMenu('===== Listar todos os Produtos =====');
-        if (this.produtos.length === 0) {
+        const produtos = this.produtoRepository.listarTodosOsProdutos();
+        if (produtos.length === 0) {
             console.log('Nenhum produto cadastrado.');
         } else {
-            this.produtos.forEach(produto => {
+            produtos.forEach(produto => {
                 console.log(produto.toString());
             });
         }
@@ -24,7 +31,7 @@ export class Menu {
     private listarProdutoPorId(): void {
         this.colorirMenu('===== Listar Produto pelo ID =====');
         const id = readline.questionInt('Digite o ID do produto: ');
-        const produto = this.produtos.find(p => p.id === id);
+        const produto = this.produtoRepository.listarProdutoPorId(id);
         if (produto) {
             console.log(produto.toString());
         } else {
@@ -37,10 +44,10 @@ export class Menu {
         this.colorirMenu('===== Cadastrar Produto =====');
         const nome = readline.question('Digite o nome do produto: ');
         const preco = readline.questionFloat('Digite o preço do produto: ');
+        const tipo = readline.question('Digite o tipo do produto (Ex: Bola, Chuteira): ');
 
-        const novoProduto = new Produto(this.proximoId, nome, preco);
-        this.produtos.push(novoProduto);
-        this.proximoId++;
+        const novoProduto = new ProdutoFutebol(0, nome, preco, tipo);
+        this.produtoRepository.cadastrarProduto(novoProduto);
         console.log('Produto cadastrado com sucesso.');
         console.log();
     }
@@ -48,15 +55,15 @@ export class Menu {
     private atualizarProduto(): void {
         this.colorirMenu('===== Atualizar Produto =====');
         const id = readline.questionInt('Digite o ID do produto que deseja atualizar: ');
-        const index = this.produtos.findIndex(p => p.id === id);
+        const produtoExistente = this.produtoRepository.listarProdutoPorId(id);
 
-        if (index !== -1) {
+        if (produtoExistente) {
             const nome = readline.question('Digite o novo nome do produto: ');
-            const preco = readline.questionFloat('Digite o novo preço do produto: ');
+            const preco = readline.questionInt('Digite o novo preço do produto: ');
+            const tipo = readline.question('Digite o novo tipo do produto: ');
 
-            this.produtos[index].nome = nome;
-            this.produtos[index].preco = preco;
-
+            const produtoAtualizado = new ProdutoFutebol(id, nome, preco, tipo);
+            this.produtoRepository.atualizarProduto(id, produtoAtualizado);
             console.log('Produto atualizado com sucesso.');
         } else {
             console.log('Produto não encontrado.');
@@ -67,10 +74,10 @@ export class Menu {
     private deletarProduto(): void {
         this.colorirMenu('===== Deletar Produto =====');
         const id = readline.questionInt('Digite o ID do produto que deseja deletar: ');
-        const index = this.produtos.findIndex(p => p.id === id);
+        const produtoExistente = this.produtoRepository.listarProdutoPorId(id);
 
-        if (index !== -1) {
-            this.produtos.splice(index, 1);
+        if (produtoExistente) {
+            this.produtoRepository.deletarProduto(id);
             console.log('Produto deletado com sucesso.');
         } else {
             console.log('Produto não encontrado.');
@@ -78,7 +85,7 @@ export class Menu {
         console.log();
     }
 
-    private exibirMenu(): void {
+    iniciarMenu(): void {
         while (true) {
             this.colorirMenu('===== Menu Principal =====');
             console.log('1. Listar todos os Produtos');
@@ -117,7 +124,7 @@ export class Menu {
 
     static main(): void {
         const menu = new Menu();
-        menu.exibirMenu();
+        menu.iniciarMenu();
     }
 }
 

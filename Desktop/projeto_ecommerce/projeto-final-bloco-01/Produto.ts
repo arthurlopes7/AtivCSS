@@ -1,8 +1,7 @@
-// Arquivo Produto.ts
-export class Produto {
-    id: number;
-    nome: string;
-    preco: number;
+export abstract class Produto {
+    protected id: number;
+    protected nome: string;
+    protected preco: number;
 
     constructor(id: number, nome: string, preco: number) {
         this.id = id;
@@ -10,7 +9,25 @@ export class Produto {
         this.preco = preco;
     }
 
-    toString(): string {
-        return `ID: ${this.id} | Nome: ${this.nome} | Preço: R$ ${this.preco.toFixed(2)}`;
+    abstract toString(): string;
+
+    getId(): number {
+        return this.id;
+    }
+
+    getNome(): string {
+        return this.nome;
+    }
+
+    getPreco(): number {
+        return this.preco;
+    }
+
+    setNome(nome: string): void {
+        this.nome = nome;
+    }
+
+    setPreco(preco: number): void {
+        this.preco = preco;
     }
 }
