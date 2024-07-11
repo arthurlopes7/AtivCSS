@@ -24,7 +24,7 @@ export class Menu {
             console.log("6. Sair");
             console.log("======================");
 
-            opcao = parseInt(readlineSync.question("Escolha uma opção: "));
+            opcao = readlineSync.questionInt("Escolha uma opção: ");
 
             switch (opcao) {
                 case 1:
@@ -72,7 +72,7 @@ export class Menu {
     }
 
     private listarProdutoPorId(): void {
-        const id = parseInt(readlineSync.question("Digite o ID do produto: "));
+        const id = readlineSync.questionInt("Digite o ID do produto: ");
         const produto = this.controller.listarProdutoPorId(id);
         if (produto) {
             console.log("\nProduto encontrado:");
@@ -88,9 +88,9 @@ export class Menu {
     }
 
     private cadastrarNovoProduto(): void {
-        const tipoProduto = parseInt(readlineSync.question("Digite o tipo de produto (1 - Camiseta, 2 - Chuteira): "));
+        const tipoProduto = readlineSync.questionInt("Digite o tipo de produto (1 - Camiseta, 2 - Chuteira): ");
         const nome = readlineSync.question("Digite o nome do produto: ");
-        const preco = parseFloat(readlineSync.question("Digite o preço do produto: "));
+        const preco = readlineSync.questionFloat("Digite o preço do produto: ");
         if (tipoProduto === 1) {
             const tamanho = readlineSync.question("Digite o tamanho da camiseta: ");
             this.controller.cadastrarCamiseta(nome, preco, tamanho);
@@ -105,11 +105,11 @@ export class Menu {
     }
 
     private atualizarProduto(): void {
-        const id = parseInt(readlineSync.question("Digite o ID do produto que deseja atualizar: "));
+        const id = readlineSync.questionInt("Digite o ID do produto que deseja atualizar: ");
         const produtoExistente = this.controller.listarProdutoPorId(id);
         if (produtoExistente) {
             const nome = readlineSync.question("Digite o novo nome do produto: ");
-            const preco = parseFloat(readlineSync.question("Digite o novo preço do produto: "));
+            const preco = readlineSync.questionFloat("Digite o novo preço do produto: ");
             if (produtoExistente instanceof Camiseta) {
                 const tamanho = readlineSync.question("Digite o novo tamanho da camiseta: ");
                 const produtoAtualizado = new Camiseta(id, nome, preco, tamanho);
@@ -127,7 +127,7 @@ export class Menu {
     }
 
     private deletarProduto(): void {
-        const id = parseInt(readlineSync.question("Digite o ID do produto que deseja deletar: "));
+        const id = readlineSync.questionInt("Digite o ID do produto que deseja deletar: ");
         const produtoExistente = this.controller.listarProdutoPorId(id);
         if (produtoExistente) {
             this.controller.deletarProduto(id);
