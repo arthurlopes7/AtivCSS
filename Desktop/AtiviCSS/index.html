@@ -9,23 +9,17 @@
     <meta name="keywords" content="HTML, CSS, JavaScript">
     <link rel="icon" href="./assets/img/favicon.svg" />
     <link rel="stylesheet" href="./assets/css/style.css">
-    <title>Universe</title>
+    <title>DevArthur</title>
 </head>
 
 <body>
 
     <header class="flex menu_container">
-
         <div id="header_content" class="menu_content">
-
             <div id="titulo">
-
                 <a href="#">DevArthur</a>
-
             </div>
-
             <div id="menu" class="flex">
-
                 <nav>
                     <ul class="flex menu_lista">
                         <li><a href="#">Home</a></li>
@@ -33,70 +27,42 @@
                         <li><a href="#contact">Contate-me</a></li>
                     </ul>
                 </nav>
-
             </div>
         </div>
-
     </header>
 
-
     <main>
-
-        <section id="home " class="home_container">
-
-            <article id="home_texto " class="home_content">
-
+        <section id="home" class="home_container">
+            <article id="home_texto" class="home_content">
                 <h4>Bem-vindo ao DevArthur</h4>
                 <h1>Aqui você descobrirá o Mundo</h1>
-                <p>
-                   Descubra mais sobre o DevArthur, venha comigo nessa jornada de conhecimento.
-                </p>
-
-                <a class="botao" target="_blank" href="https://github.com/conteudoGeneration"
-                    alt="Github da Generation Brasil">
+                <p>Descubra mais sobre o DevArthur, venha comigo nessa jornada de conhecimento.</p>
+                <a class="botao" target="_blank" href="https://github.com/conteudoGeneration" alt="Github da Generation Brasil">
                     Explorar
                 </a>
-
             </article>
-
             <article id="home_imagem" class="home_content">
                 <img src="./assets/img/astronauta.svg" alt="Capacete de Astronauta Animado">
             </article>
-
         </section>
 
-
         <section id="about" class="sobre_container">
-
             <img src="assets/img/user_01.svg" alt="Foto do Perfil do Github" width="450px">
-
-            <article id="sobre_texto" >
-
+            <article id="sobre_texto">
                 <h1>Sobre mim</h1>
-
-                <p>
-                    Olá, me chamo Arthur Lopes, sou um desenvolvedor fullstack em JavaScript, formado pela Generation Brasil, busco entrar na área da tecnologia para executar meus conhecimentos.
-                </p>
-
+                <p>Olá, me chamo Arthur Lopes, sou um desenvolvedor fullstack em JavaScript, formado pela Generation Brasil, busco entrar na área da tecnologia para executar meus conhecimentos.</p>
                 <div id="sobre_github" class="flex sobre_github">
-
                     <a class="botao" target="_blank" href="https://github.com/arthurlopes7">Github</a>
                     <p>11 Seguidores</p>
                     <p>15 Repositórios</p>
-
                 </div>
-
             </article>
-
         </section>
 
-        <section id="contact"  class="contato_container">
-
+        <section id="contact" class="contato_container">
             <article id="redes_sociais" class="flex contanto_content">
-
-                <h4 >Contate-me</h4>
-                <p >Arthur Lopes via email: lopesarthur2013@gmail.com</p>
-                
+                <h4>Contate-me</h4>
+                <p>Arthur Lopes via email: lopesarthur2013@gmail.com</p>
                 <div id="icones_redes_sociais" class="flex social_container">
                     <a href="">
                         <img class="social_icon" src="assets/img/linkedin.svg" alt="LinkedIn" />
@@ -108,11 +74,9 @@
                         <img class="social_icon" src="assets/img/instagram.svg" alt="Instagram" />
                     </a>
                 </div>
-
             </article>
 
-            <form action="" method="POST">
-
+            <form id="contactForm">
                 <label for="name">Nome: </label>
                 <input id="name" type="text" name="name" placeholder="Digite seu nome">
                 <span id="txtNome"></span>
@@ -122,25 +86,22 @@
                 <span id="txtEmail"></span>
 
                 <label for="subject">Assunto: </label>
-                <input id="subject" type="text" name="subject" placeholder="Digite o título da message">
+                <input id="subject" type="text" name="subject" placeholder="Digite o título da mensagem">
                 <span id="txtSubject"></span>
 
                 <label for="message">Mensagem: </label>
-                <textarea id="message" name="message" placeholder="Digite sua message"></textarea>
+                <textarea id="message" name="message" placeholder="Digite sua mensagem"></textarea>
 
                 <button class="botao" type="submit">Enviar</button>
-               <a href="sucess.html">Enviar</a> 
-
             </form>
-
         </section>
-
     </main>
 
     <footer>
         Feito com 🧡 por Generation Brasil - 2024
     </footer>
 
+    <script src="./assets/js/script.js"></script>
 </body>
 
 </html>
