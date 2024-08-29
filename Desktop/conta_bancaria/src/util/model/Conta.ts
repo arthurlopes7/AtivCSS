@@ -1,4 +1,4 @@
-export class Conta{
+export abstract class Conta{
 
     // Definir os Atributos da Classe (Caracteristicas)
     private _numero: number;
@@ -98,7 +98,7 @@ export class Conta{
         console.log(`Numero da agência: ${this._agencia}`);
         console.log(`Tipo da conta: ${tipo}`);
         console.log(`Titular da conta: ${this._titular}`);
-        console.log(`Saldo da conta: ${this._saldo.toFixed(2)}`);
+        console.log(`Saldo da conta: R$ ${this._saldo.toFixed(2)}`);
     }
 
 }
